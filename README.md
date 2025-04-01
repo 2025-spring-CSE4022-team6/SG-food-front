@@ -1,4 +1,18 @@
-### 로컬에 git clone 하고, 파워쉘 터미널에서 npm install styled-components react-router-dom 하고 npm start 하면 로컬에서 보입니다!
+# 로컬에 git clone 하고, 파워쉘 터미널에서 npm install styled-components react-router-dom 하고 npm start 하면 로컬에서 보입니다!
+
+## 📁 프로젝트 폴더 구조
+
+sogang-food-map/ ├── public/ # 정적 파일 (favicon, index.html 등) ├── src/ │ ├── assets/ # 폰트, 이미지 등 정적 리소스 │ │ └── fonts/ │ ├── components/ # 재사용 가능한 컴포넌트 모음 │ ├── pages/ # 페이지 단위 컴포넌트 │ ├── styles/ # 전역 스타일(css 변수, 폰트 등) │ │ ├── color.css │ │ └── font.css │ ├── App.js # 메인 컴포넌트 │ └── index.js # 앱 진입점 ├── package.json # 프로젝트 메타 정보 및 의존성 └── README.md # 프로젝트 설명
+
+- 전역 색상은 `styles/color.css`, 커스텀 폰트는 `styles/font.css`에 정의되어 있습니다.
+- `styled-components`를 활용하여 컴포넌트 단위로 스타일을 관리합니다.
+
+### css 변수 사용 예시
+const Button = styled.button`
+  background-color: var(--pink-main);
+  color: var(--gray-900);
+`;
+
 
 # Getting Started with Create React App
 
