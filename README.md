@@ -1,3 +1,5 @@
+### 파워쉘 터미널에서 npm install styled-components react-router-dom 하고 npm start 하면 로컬에서 보입니다!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
