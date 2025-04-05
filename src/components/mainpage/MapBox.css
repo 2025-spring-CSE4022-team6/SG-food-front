@@ -1,0 +1,23 @@
+
+/* MapBox.css */
+.mapbox {
+    height: 35vh;
+    width: 100%;
+    /* 필요한 높이로 조정 가능 */
+    border: 1px solid var(--gray-600); /* 회색 테두리 */
+    box-sizing: border-box;
+    background-color: #fff;
+    
+    /* 중앙 정렬 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mapbox-placeholder {
+    font-size: 1rem;
+    color : var(--gray-600);
+    /* color: var(--gray-600); */
+    margin: 0;
+  }
+  
