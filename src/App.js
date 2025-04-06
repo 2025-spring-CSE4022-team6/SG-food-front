@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "./components/Layout";
+
+import RestaurantDetail from './pages/restaurant/RestaurantDetail'
 // import BankbookPage from "./pages/bankbook/bankbook";
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
 
           {/* Header가 필요한 페이지들 */}
           <Route element={<Layout />}>
+          <Route path="/restaurant/:id" element={<RestaurantDetail />} />
             {/* <Route path="/bankbook" element={<CreateBankbook />} /> */}
           </Route>
         </Routes>
