@@ -1,7 +1,7 @@
 
 /* MapBox.css */
 .mapbox {
-    height: 35vh;
+    height: 42vh;
     width: 100%;
     /* 필요한 높이로 조정 가능 */
     border: 1px solid var(--gray-600); /* 회색 테두리 */

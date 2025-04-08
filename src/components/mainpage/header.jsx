@@ -7,7 +7,7 @@ const Header = () => {
         {/* 왼쪽: 로고 이미지 */}
         <div className="headbox-left">
           <img
-            src={process.env.PUBLIC_URL + '/cutlery.png'}
+            src={'/img/pubpicklogo.png'}
             alt="Cutlery Icon"
             className="cutlery-icon"
           />
@@ -15,7 +15,7 @@ const Header = () => {
   
         {/* 가운데: 코럴색 배경 + 흰색 타이틀 */}
         <div className="headbox-center">
-          <h1>SOCHELINE Guide</h1>
+          <h1>Pub Pick</h1>
         </div>
   
         {/* 오른쪽: 햄버거 메뉴 버튼 */}

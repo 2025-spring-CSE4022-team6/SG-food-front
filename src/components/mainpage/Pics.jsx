@@ -9,7 +9,7 @@ const picData = [
     
   {
     id: 1,
-    name: '핵밥 서강대점',
+    name: '고주파',
     rating: 4.8,
     reviewCount: 500,
     tags: ['맛', '분위기', '가성비'],
@@ -17,7 +17,7 @@ const picData = [
   },
   {
     id: 2,
-    name: '핵밥 홍대점',
+    name: '홍등롱',
     rating: 4.7,
     reviewCount: 350,
     tags: ['맛', '분위기'],
@@ -25,7 +25,7 @@ const picData = [
   },
   {
     id: 3,
-    name: '핵밥 이대점',
+    name: '서강포차',
     rating: 4.9,
     reviewCount: 420,
     tags: ['가성비'],
@@ -33,7 +33,7 @@ const picData = [
   },
   {
     id: 4,
-    name: '핵밥 성수점',
+    name: '낭만 오지',
     rating: 4.5,
     reviewCount: 420,
     tags: ['가성비'],
