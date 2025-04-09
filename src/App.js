@@ -8,9 +8,8 @@ import GlobalStyle from "./styles/GlobalStyle";
 import Layout from "./components/Layout";
 
 import MainPage from "./pages/mainpage/MainPage";
-import RestaurantDetail from './pages/restaurant/RestaurantDetail'
+import RestaurantDetail from "./pages/restaurant/RestaurantDetail";
 import MyPage from "./components/mypage/MyPage";
-
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="/restaurant/:id" element={<RestaurantDetail />} />
             <Route path="/mypage" element={<MyPage />} />
-
           </Route>
         </Routes>
       </Router>
