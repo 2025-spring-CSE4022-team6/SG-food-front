@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import "../../styles/color.css";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as penIcon } from "../../assets/icons/penIcon.svg";
 import { ReactComponent as homeIcon } from "../../assets/icons/homeIcon.svg";
@@ -8,6 +9,14 @@ import { ReactComponent as userIcon } from "../../assets/icons/userIcon.svg";
 
 export default function Footer() {
   const [active, setActive] = useState("home");
+  const navigate = useNavigate();
+
+  const handleClick = (key) => {
+    setActive(key);
+    if (key === "home") navigate("/");
+    if (key === "write") navigate("/write");
+    if (key === "mypage") navigate("/mypage");
+  };
 
   const menuItems = [
     { key: "write", icon: penIcon, label: "리뷰쓰기" },
@@ -18,7 +27,7 @@ export default function Footer() {
   return (
     <FooterBar>
       {menuItems.map(({ key, icon, label }) => (
-        <IconButton key={key} onClick={() => setActive(key)}>
+        <IconButton key={key} onClick={() => handleClick(key)}>
           <StyledIcon as={icon} selected={active === key} />
           <Label selected={active === key}>{label}</Label>
         </IconButton>
@@ -56,7 +65,7 @@ const Label = styled.span`
   font-size: 0.75rem;
   margin-top: 0.25rem;
   color: ${({ selected }) =>
-    selected ? "var(--orange-main)" : "var(--gray-700)"};
+    selected ? "var(--coral-main)" : "var(--gray-700)"};
   font-weight: ${({ selected }) => (selected ? "600" : "400")};
   transition: color 0.2s ease;
 `;
@@ -65,7 +74,7 @@ const StyledIcon = styled.svg`
   width: 1.625rem;
   height: 1.625rem;
   stroke: ${({ selected }) =>
-    selected ? "var(--orange-main)" : "var(--gray-400)"};
+    selected ? "var(--coral-main)" : "var(--gray-400)"};
   stroke-width: ${({ selected }) => (selected ? "2.1" : "1.8")};
   transition: stroke 0.2s ease, stroke-width 0.2s ease;
 `;
