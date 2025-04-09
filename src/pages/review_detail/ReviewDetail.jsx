@@ -4,7 +4,7 @@ import ReviewProfile from '../../components/review_detail/ReviewProfile.jsx';
 import ReviewHeader from '../../components/review_detail/ReviewHeader.jsx';
 import ReviewMain from '../../components/review_detail/ReviewMain.jsx';
 import ReviewThumbs from '../../components/review_detail/ReviewThumbs.jsx';
-import Header from "../../components/mainpage/header.jsx";
+// import Header from "../../components/mainpage/header.jsx";
 
 function ReviewDetail() {
   // 임의의 데이터 (실제 사용시 API나 props로 데이터를 전달)
@@ -27,7 +27,7 @@ function ReviewDetail() {
     <div>
       {/* 상단 기본 헤더 */}
       {/* 없는게 나을거 같기도 함 */}
-      <Header />
+      {/* <Header /> */}
 
       {/* 리뷰 헤더 영역 */}
       <ReviewHeader />
