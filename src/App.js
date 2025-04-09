@@ -6,7 +6,10 @@ import "./styles/font.css";
 import GlobalStyle from "./styles/GlobalStyle";
 
 import Layout from "./components/Layout";
+
+import RestaurantDetail from './pages/restaurant/RestaurantDetail'
 import MyPage from "./components/mypage/MyPage";
+
 
 function App() {
   return (
@@ -18,7 +21,10 @@ function App() {
 
           {/* Footer가 필요한 페이지들 */}
           <Route element={<Layout />}>
+
+            <Route path="/restaurant/:id" element={<RestaurantDetail />} />
             <Route path="/mypage" element={<MyPage />} />
+
           </Route>
         </Routes>
       </Router>
