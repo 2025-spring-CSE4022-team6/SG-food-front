@@ -1,4 +1,5 @@
 # 로컬에 git clone 하고, 파워쉘 터미널에서 npm install styled-components react-router-dom 하고 npm start 하면 로컬에서 보입니다!
+#npm install react-icons 도 해야 됨
 
 # 🥘 Sogang Food Map
 
