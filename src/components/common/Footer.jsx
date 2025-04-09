@@ -56,7 +56,7 @@ const Label = styled.span`
   font-size: 0.75rem;
   margin-top: 0.25rem;
   color: ${({ selected }) =>
-    selected ? "var(--orange-main)" : "var(--gray-700)"};
+    selected ? "var(--coral-main)" : "var(--gray-700)"};
   font-weight: ${({ selected }) => (selected ? "600" : "400")};
   transition: color 0.2s ease;
 `;
@@ -65,7 +65,7 @@ const StyledIcon = styled.svg`
   width: 1.625rem;
   height: 1.625rem;
   stroke: ${({ selected }) =>
-    selected ? "var(--orange-main)" : "var(--gray-400)"};
+    selected ? "var(--coral-main)" : "var(--gray-400)"};
   stroke-width: ${({ selected }) => (selected ? "2.1" : "1.8")};
   transition: stroke 0.2s ease, stroke-width 0.2s ease;
 `;
