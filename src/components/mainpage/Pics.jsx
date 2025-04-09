@@ -40,7 +40,7 @@ const picData = [
 ];
 
 const Pics = () => {
-  let [imgsrc, imgsrcchange] = useState("/img/food_default.svg");
+  let [imgsrc, imgsrcchange] = useState("/img/store-default.jpg");
   return (
     <div className="pics-container">
       {picData.map((item) => (
