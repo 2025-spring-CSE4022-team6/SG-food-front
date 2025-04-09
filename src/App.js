@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "./components/Layout";
 import MainPage from "./pages/mainpage/MainPage";
+import ReviewDetail from "./pages/review_detail/ReviewDetail";
 // import BankbookPage from "./pages/bankbook/bankbook";
 
 function App() {
@@ -16,8 +17,10 @@ function App() {
 
           {/* Header가 필요한 페이지들 */}
           <Route path="/" element={<MainPage />} />
+          <Route path="/review/:id" element={<ReviewDetail />} />
           {/* <Route path="/bankbook" element={<BankbookPage />} /> */}
           {/* <Route path="/bankbook/:id" element={<BankbookPage />} /> */}
+          
           <Route element={<Layout />}>
             {/* <Route path="/bankbook" element={<CreateBankbook />} /> */}
           </Route>
