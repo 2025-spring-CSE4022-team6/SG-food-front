@@ -7,10 +7,10 @@ const RestaurantDetail = () => {
   const { id } = useParams();
 
   const restaurant = {
-    name: "핵밥 서강대점",
+    name: "고주파",
     rating: 4.1,
-    type: "일본 가정식",
-    best: "맛",
+    type: "구이",
+    best: "가성비",
     hours: "11:00 ~ 21:00",
     breakTime: "14:00 ~ 15:00",
     image: "/img/store-default.jpg",
@@ -47,12 +47,14 @@ const RestaurantDetail = () => {
     <Wrapper>
       <Content>
         <Image src={restaurant.image} alt="음식 이미지" />
-        <Title>{restaurant.name}</Title>
-        <Rating>★{restaurant.rating}</Rating>
+        <TitleRow>
+          <Title>{restaurant.name}</Title>
+          <Rating>★{restaurant.rating}</Rating>
+        </TitleRow>
         <TagList>
           <Tag>#{restaurant.type}</Tag>
           <Tag>#{restaurant.best}</Tag>
-          <Tag>#혼밥가능</Tag>
+          <Tag>#맛</Tag>
         </TagList>
         <Time>
           영업 시간: {restaurant.hours}
@@ -102,18 +104,31 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   width: 100%;
-  max-width: 300px;
+  max-width: 24rem;
 `;
 
 const Image = styled.img`
   width: 100%;
-  max-width: 18.75rem;
-  border-radius: 0.75rem;
-  margin-bottom: 1rem;
+  max-width: 24rem; /* 원하는 가로 사이즈 */
+  height: 12rem; /* 원하는 세로 고정 */
+  object-fit: cover; /* ✅ 박스 채우기 (잘릴 수 있음) */
+  object-position: center; /* ✅ 중앙 기준으로 잘리게 */
+  border-radius: 0.5rem;
+  display: block;
+  margin: 0 auto 0rem auto;
+  background-color: #fff; /* 로딩 중 배경 */
+`;
+
+const TitleRow = styled.div`
+  display: flex;
+  justify-content: center; /* 또는 space-between, flex-start 등도 가능 */
+  align-items: baseline; /* 제목과 별점 수평 정렬 */
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
 `;
 
 const Title = styled.h2`
-  margin-top: 1rem;
   font-size: 1.375rem;
   font-weight: 700;
   color: #ff6f61;
@@ -129,7 +144,7 @@ const TagList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
   justify-content: center;
 `;
 
@@ -141,18 +156,18 @@ const Tag = styled.div`
   font-size: 0.8125rem;
   color: #ff6f61;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 `;
 
 const Time = styled.p`
   font-size: 0.8125rem;
-  color: #a1a1a1;
-  margin-bottom: 1.25rem;
+  color: rgb(129, 129, 129);
+  margin-bottom: 0rem;
   line-height: 1.4;
 `;
 
 const ReviewList = styled.ul`
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   padding: 0;
   list-style: none;
   width: 100%;
