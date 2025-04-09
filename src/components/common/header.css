@@ -1,0 +1,63 @@
+/* 최상단 HEADBOX 컨테이너 */
+/* @import url('../../styles/color.css'); */
+
+.headbox {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 3.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+  background-color: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+  box-sizing: border-box;
+}
+
+.headbox-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.cutlery-icon {
+  width: 2.5rem;
+  height: auto;
+}
+
+.brand-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--coral-main);
+  margin: 0;
+  letter-spacing: -0.05em; /* ✅ 글자 간 간격 좁게 */
+}
+
+/* 오른쪽: 햄버거 메뉴 버튼 */
+.headbox-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* 버튼을 눌렀을 때 잠시 음영 효과 */
+.menu-button:active {
+  box-shadow: inset 0 0 0.25rem rgba(0, 0, 0, 0.3);
+}
+
+/* 햄버거 막대 (3줄) */
+.menu-bar {
+  display: block;
+  width: 1.5rem;
+  height: 0.3rem;
+  background-color: var(--coral-main);
+  margin: 0.3rem 0;
+}
