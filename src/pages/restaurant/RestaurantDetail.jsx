@@ -186,6 +186,7 @@ const Pagination = styled.div`
   width: 100%;
   max-width: 300px;
   padding-top: 1rem;
+  margin-bottom: 4rem;
 `
 
 const PageButton = styled.button`
