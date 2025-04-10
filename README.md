@@ -44,7 +44,6 @@ const Button = styled.button`
   color: var(--gray-900);
 `;
 
-
 ## 🙋‍♀️ 팀 소개
 
 # Getting Started with Create React App

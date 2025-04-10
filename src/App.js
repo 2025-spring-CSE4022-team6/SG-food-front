@@ -1,28 +1,31 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import styled from "styled-components";
+import "./styles/font.css";
+import GlobalStyle from "./styles/GlobalStyle";
+
 import Layout from "./components/Layout";
+
 import MainPage from "./pages/mainpage/MainPage";
 import ReviewDetail from "./pages/review_detail/ReviewDetail";
-// import BankbookPage from "./pages/bankbook/bankbook";
+import RestaurantDetail from "./pages/restaurant/RestaurantDetail";
+import MyPage from "./components/mypage/MyPage";
+
 
 function App() {
   return (
     <AppContainer>
+      <GlobalStyle />
       <Router>
         <Routes>
-          {/* Header가 필요 없는 페이지들 */}
-          {/* <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} /> */}
 
-          {/* Header가 필요한 페이지들 */}
-          <Route path="/" element={<MainPage />} />
-          <Route path="/review/:id" element={<ReviewDetail />} />
-          {/* <Route path="/bankbook" element={<BankbookPage />} /> */}
-          {/* <Route path="/bankbook/:id" element={<BankbookPage />} /> */}
-          
           <Route element={<Layout />}>
-            {/* <Route path="/bankbook" element={<CreateBankbook />} /> */}
+            <Route path="/" element={<MainPage />} />
+            <Route path="/restaurant/:id" element={<RestaurantDetail />} />
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/review/:id" element={<ReviewDetail />} />
+
           </Route>
         </Routes>
       </Router>
@@ -32,13 +35,8 @@ function App() {
 
 const AppContainer = styled.div`
   width: 56.25vh;
-  height: 100vh;
-  overflow: scroll;
   margin: 0 auto;
   background-color: var(--bg-color);
-  @media (max-width: 600px) {
-    width: 100%;
-  }
 `;
 
 export default App;

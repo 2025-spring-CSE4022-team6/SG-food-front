@@ -1,5 +1,6 @@
-import React from 'react';
-import './Pic.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./Pic.css";
 
 /**
  * 단일 아이템(가게 정보) 카드
@@ -9,9 +10,15 @@ import './Pic.css';
  * @param {string[]} tags       - 태그 배열 (예: ['맛', '분위기', '가성비'])
  * @param {string} imageSrc     - 이미지 경로 (예: '/img/cutlery.png')
  */
-const Pic = ({ name, rating, reviewCount, tags, imageSrc }) => {
+const Pic = ({ id, name, rating, reviewCount, tags, imageSrc }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/restaurant/${id}`);
+  };
+
   return (
-    <div className="pic-box">
+    <div className="pic-box" onClick={handleClick}>
       {/* 왼쪽 이미지 영역 */}
       <div className="pic-box-left">
         <img src={imageSrc} alt={name} className="pic-box-img" />
@@ -22,13 +29,17 @@ const Pic = ({ name, rating, reviewCount, tags, imageSrc }) => {
         {/* 상단: 가게 이름 + 별점/리뷰 */}
         <div className="pic-box-header">
           <span className="pic-box-title">{name}</span>
-          <span className="pic-box-rating">★ {rating} ({reviewCount} reviews)</span>
+          <span className="pic-box-rating">
+            ★ {rating} ({reviewCount} reviews)
+          </span>
         </div>
 
         {/* 하단: 태그 목록 */}
         <div className="pic-box-tags">
           {tags.map((tag, idx) => (
-            <span key={idx} className="pic-box-tag">{tag}</span>
+            <span key={idx} className="pic-box-tag">
+              {tag}
+            </span>
           ))}
         </div>
       </div>
