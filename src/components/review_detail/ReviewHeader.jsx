@@ -2,16 +2,18 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import "../../styles/color.css";
 
 // Styled 컴포넌트 정의
 const Header = styled.header`
+  position: sticky;
+  top: 0;
   width: 100%;
-  height: 3rem;
+  height: 3.7rem;
   display: flex;
   align-items: center;
   padding: 0.625rrem;
   background-color: #fff;
-  border-bottom: 1px #000001;
 `;
 
 const BackButton = styled.button`
@@ -20,8 +22,8 @@ const BackButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  color: #333;
-  font-size: 1rem;
+  color: var(--gray-900);
+  font-size: 1.2rem;
   font-weight: 500;
 
   &:hover {
@@ -30,15 +32,15 @@ const BackButton = styled.button`
 `;
 
 const BackIcon = styled.img`
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
   object-fit: contain;
   margin-right: 0.5rem;
 `;
 
 
 const HeaderText = styled.span`
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-left: 0.125rem;
 `;
 

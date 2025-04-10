@@ -1,15 +1,26 @@
 // src/components/review/ReviewMain.jsx
 import React from 'react';
 import styled from 'styled-components';
+import "../../styles/color.css";
+import BookmarkToggle from '../common/BookMarkToggle';
 
 const ReviewMainContainer = styled.div`
   /* 전체 컨테이너 스타일 */
+  
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   background-color: #fff;
 `;
+
+const TitleContainer = styled.div`
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  `;
 
 const StoreName = styled.h1`
   /* 가게 이름 스타일: 볼드체 */
@@ -17,6 +28,7 @@ const StoreName = styled.h1`
   font-weight: bold;
   margin-bottom: 0.75rem;
 `;
+
 
 const ImageScrollContainer = styled.div`
   /* 가게 사진 영역: 가로 스크롤 */
@@ -59,11 +71,17 @@ const Tag = styled.span`
   color: #000000;
 `;
 
+
+
 function ReviewMain({ storeName, images, content, tags }) {
   return (
     <ReviewMainContainer>
-      {/* 1. 가게 이름 */}
-      <StoreName>{storeName}</StoreName>
+      {/* 1. 가게 이름, 북마크 버튼 영역역 */}
+      <TitleContainer>
+        <StoreName>{storeName}</StoreName>
+        <BookmarkToggle />
+      </TitleContainer>
+      
 
       {/* 2. 가게 사진 (가로 스크롤) */}
       <ImageScrollContainer>

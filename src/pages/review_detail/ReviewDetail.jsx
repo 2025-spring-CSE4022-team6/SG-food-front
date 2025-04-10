@@ -10,13 +10,13 @@ function ReviewDetail() {
   // 임의의 데이터 (실제 사용시 API나 props로 데이터를 전달)
   const profileData = {
     profileImage: '/img/2. 교표(Symbol).png', 
-    name: '홍길동',
+    name: '한유승',
     rating: 4, // 5점 만점 중 4점
     date: '2025-04-10'
   };
 
   const storeData = {
-    storeName: '맛있는 가게',
+    storeName: '핵밥 서강대점',
     images: ['/img/hackbob.jpg', '/img/hackbob.jpg', '/img/hackbob.jpg', '/img/hackbob.jpg', '/img/hackbob.jpg','/img/hackbob.jpg','/img/hackbob.jpg'],
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     tags: ['맛있어요', '분위기가 좋아요', '가성비 최고']

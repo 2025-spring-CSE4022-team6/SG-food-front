@@ -1,6 +1,7 @@
 // src/components/review/ReviewProfile.jsx
 import React from "react";
 import styled from "styled-components";
+import "../../styles/color.css";
 
 // 스타일드 컴포넌트 정의
 const ReviewProfileContainer = styled.div`
@@ -51,7 +52,7 @@ const Star = styled.span`
 
 const DateText = styled.span`
   font-size: 0.75rem;
-  color: #777;
+  color: var(--gray-600);
   margin-left: 0.5rem;
 `;
 
@@ -60,6 +61,7 @@ const ReviewProfile = ({ profileImage, name, rating, date }) => {
   const totalStars = 5;
 
   // rating 값에 따라 활성화된 별(★)과 비활성화된 별(☆)을 보여줍니다.
+  // 추후에 소수점 단위 업데이트
   const stars = Array.from({ length: totalStars }, (_, index) => (
     <Star key={index} active={index < rating}>
       ★
