@@ -7,6 +7,7 @@
   margin-bottom: 0.75rem; /* 카드 간 간격 */
   background-color: #ffffff; /* 필요 시 배경색 조절 */
   cursor: pointer;
+  position: relative;
 }
 
 .pic-box-left {
@@ -48,6 +49,12 @@
 .pic-box-rating {
   font-size: 0.875rem;
   color: var(--gray-600);
+}
+
+.bookmark-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 
 .pic-box-tags {

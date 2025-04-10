@@ -17,7 +17,7 @@ const RestaurantDetail = () => {
   };
 
   const reviews = [
-    { id: 1, title: "맛있는데 비쌈", rating: 4.2 },
+    { id: 1, title: "고주파 최고!!", rating: 4.2 },
     { id: 2, title: "존맛탱 인정", rating: 5.0 },
     { id: 3, title: "두 번은 안 감", rating: 2.0 },
     { id: 4, title: "또 갈 듯", rating: 4.5 },
@@ -55,6 +55,7 @@ const RestaurantDetail = () => {
           <Tag>#{restaurant.type}</Tag>
           <Tag>#{restaurant.best}</Tag>
           <Tag>#맛</Tag>
+          <Tag>#청결</Tag>
         </TagList>
         <Time>
           영업 시간: {restaurant.hours}

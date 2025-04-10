@@ -1,6 +1,6 @@
 // src/components/review/ReviewThumbs.jsx
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 import "../../styles/color.css";
 
 // 전체 컨테이너
@@ -20,12 +20,12 @@ const ThumbsButton = styled.button`
   align-items: center;
   gap: 4px; /* 이미지와 텍스트 간격 */
   padding: 0.5rem 0.75rem;
-  border: 1px solid ${props => (props.active ? 'var(--coral-main)' : '#ccc')};
+  border: 1px solid ${(props) => (props.active ? "var(--coral-main)" : "#ccc")};
   border-radius: 1.25rem;
   background-color: var(--white);
   cursor: pointer;
   font-size: 0.875rem;
-  color: ${props => (props.active ? 'var(--coral-main)' : 'var(--gray-900)')};
+  color: ${(props) => (props.active ? "var(--coral-main)" : "var(--gray-900)")};
   transition: border-color 0.2s, color 0.2s;
 
   &:hover {

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Pic.css";
+import BookmarkToggle from "../common/BookMarkToggle";
 
 /**
  * 단일 아이템(가게 정보) 카드
@@ -32,6 +33,7 @@ const Pic = ({ id, name, rating, reviewCount, tags, imageSrc }) => {
           <span className="pic-box-rating">
             ★ {rating} ({reviewCount} reviews)
           </span>
+          <BookmarkToggle />
         </div>
 
         {/* 하단: 태그 목록 */}

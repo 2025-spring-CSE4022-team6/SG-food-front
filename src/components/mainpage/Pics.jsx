@@ -9,7 +9,7 @@ const picData = [
     name: "고주파",
     rating: 4.8,
     reviewCount: 500,
-    tags: ["맛", "분위기", "가성비"],
+    tags: ["맛", "가성비", "청결"],
     imageSrc: "/img/cutlery.png", // public 폴더에 img/cutlery.png
   },
   {
