@@ -10,6 +10,7 @@ import Layout from "./components/Layout";
 import MainPage from "./pages/mainpage/MainPage";
 import RestaurantDetail from "./pages/restaurant/RestaurantDetail";
 import MyPage from "./components/mypage/MyPage";
+import ReviewWrite from './pages/ReviewWrite'
 
 function App() {
   return (
@@ -17,7 +18,10 @@ function App() {
       <GlobalStyle />
       <Router>
         <Routes>
-          {/* Footer가 필요 없는 페이지들 */}
+          {/* Footer 없는 풀스크린 페이지 */}
+          <Route path="/write" element={<ReviewWrite />} />
+
+          {/* Footer 포함되는 페이지들 */}
           <Route element={<Layout />}>
             <Route path="/" element={<MainPage />} />
             <Route path="/restaurant/:id" element={<RestaurantDetail />} />
@@ -26,7 +30,7 @@ function App() {
         </Routes>
       </Router>
     </AppContainer>
-  );
+  )
 }
 
 const AppContainer = styled.div`
