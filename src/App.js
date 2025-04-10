@@ -8,7 +8,8 @@ import GlobalStyle from "./styles/GlobalStyle";
 import Layout from "./components/Layout";
 
 import MainPage from "./pages/mainpage/MainPage";
-import RestaurantDetail from './pages/restaurant/RestaurantDetail'
+import ReviewDetail from "./pages/review_detail/ReviewDetail";
+import RestaurantDetail from "./pages/restaurant/RestaurantDetail";
 import MyPage from "./components/mypage/MyPage";
 
 
@@ -18,11 +19,12 @@ function App() {
       <GlobalStyle />
       <Router>
         <Routes>
-          {/* Footer가 필요 없는 페이지들 */}
+
           <Route element={<Layout />}>
             <Route path="/" element={<MainPage />} />
             <Route path="/restaurant/:id" element={<RestaurantDetail />} />
             <Route path="/mypage" element={<MyPage />} />
+            <Route path="/review/:id" element={<ReviewDetail />} />
 
           </Route>
         </Routes>
@@ -33,8 +35,6 @@ function App() {
 
 const AppContainer = styled.div`
   width: 56.25vh;
-  height: 100vh;
-  overflow: scroll;
   margin: 0 auto;
   background-color: var(--bg-color);
 `;

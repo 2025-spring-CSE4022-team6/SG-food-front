@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import "../../styles/color.css";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as penIcon } from "../../assets/icons/penIcon.svg";
 import { ReactComponent as homeIcon } from "../../assets/icons/homeIcon.svg";
@@ -8,6 +9,14 @@ import { ReactComponent as userIcon } from "../../assets/icons/userIcon.svg";
 
 export default function Footer() {
   const [active, setActive] = useState("home");
+  const navigate = useNavigate();
+
+  const handleClick = (key) => {
+    setActive(key);
+    if (key === "home") navigate("/");
+    if (key === "write") navigate("/write");
+    if (key === "mypage") navigate("/mypage");
+  };
 
   const menuItems = [
     { key: "write", icon: penIcon, label: "리뷰쓰기" },
@@ -18,7 +27,7 @@ export default function Footer() {
   return (
     <FooterBar>
       {menuItems.map(({ key, icon, label }) => (
-        <IconButton key={key} onClick={() => setActive(key)}>
+        <IconButton key={key} onClick={() => handleClick(key)}>
           <StyledIcon as={icon} selected={active === key} />
           <Label selected={active === key}>{label}</Label>
         </IconButton>
