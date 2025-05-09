@@ -1,7 +1,7 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Pic.css";
-
+import "../../styles/color.css";
 /**
  * 단일 아이템(가게 정보) 카드
  * @param {string} name         - 가게 이름 (예: '핵밥 서강대점')
@@ -10,15 +10,22 @@ import "./Pic.css";
  * @param {string[]} tags       - 태그 배열 (예: ['맛', '분위기', '가성비'])
  * @param {string} imageSrc     - 이미지 경로 (예: '/img/cutlery.png')
  */
-const Pic = ({ id, name, rating, reviewCount, tags, imageSrc }) => {
+const Pic = forwardRef (({ id, name, rating, reviewCount, tags, imageSrc,
+   isSelected, onSelect, index  }, ref) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
+    onSelect(index);
     navigate(`/restaurant/${id}`);
   };
 
   return (
-    <div className="pic-box" onClick={handleClick}>
+    <div 
+      ref={ref}
+      className="pic-box" 
+      onClick={handleClick}
+      style={{ backgroundColor: isSelected ? 'var(--coral-main)' : '#ffffff' }}
+      >
       {/* 왼쪽 이미지 영역 */}
       <div className="pic-box-left">
         <img src={imageSrc} alt={name} className="pic-box-img" />
@@ -45,6 +52,6 @@ const Pic = ({ id, name, rating, reviewCount, tags, imageSrc }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Pic;
