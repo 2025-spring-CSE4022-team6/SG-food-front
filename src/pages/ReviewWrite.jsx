@@ -1,9 +1,18 @@
-import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
-import { FaCamera, FaMapMarkerAlt, FaBox } from 'react-icons/fa'
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { FaCamera, FaMapMarkerAlt, FaBox } from "react-icons/fa";
+import { useState } from "react";
+import PlaceSearchModal from "../components/PlaceSearchModal";
 
 const ReviewWrite = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false); // 🔥 추가
+  const [selectedPlace, setSelectedPlace] = useState(null); // 선택한 장소
+
+  const handleSelectPlace = (place) => {
+    setSelectedPlace(place);
+    setShowModal(false);
+  };
 
   return (
     <Container>
@@ -25,15 +34,24 @@ const ReviewWrite = () => {
       </FormWrapper>
 
       <Footer>
-        <FooterButton><FaCamera /> 사진추가</FooterButton>
-        <FooterButton><FaMapMarkerAlt /> 장소</FooterButton>
-        <FooterButton><FaBox /> 상품</FooterButton>
+        <FooterButton>
+          <FaCamera /> 사진추가
+        </FooterButton>
+        <FooterButton onClick={() => setShowModal(true)}>
+          <FaMapMarkerAlt /> 장소
+        </FooterButton>
       </Footer>
+      {showModal && (
+        <PlaceSearchModal
+          onSelect={handleSelectPlace}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </Container>
-  )
-}
+  );
+};
 
-export default ReviewWrite
+export default ReviewWrite;
 
 // ---------- styled-components ----------
 
@@ -45,14 +63,14 @@ const Container = styled.div`
   padding: 1rem;
   position: relative;
   box-sizing: border-box;
-`
+`;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-`
+`;
 
 const CancelButton = styled.button`
   background: none;
@@ -61,7 +79,7 @@ const CancelButton = styled.button`
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-`
+`;
 
 const DoneButton = styled.button`
   background-color: #ffdab9;
@@ -71,36 +89,36 @@ const DoneButton = styled.button`
   font-weight: bold;
   color: #ff6f61;
   cursor: pointer;
-`
+`;
 
 const UserInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
-`
+`;
 
 const Avatar = styled.div`
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   background-color: #e0e0e0;
-`
+`;
 
 const UserText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-`
+`;
 
 const Name = styled.span`
   font-weight: bold;
-`
+`;
 
 const Username = styled.span`
   font-size: 0.875rem;
   color: #aaa;
-`
+`;
 
 const FormWrapper = styled.div`
   flex-grow: 1;
@@ -109,7 +127,7 @@ const FormWrapper = styled.div`
   justify-content: flex-start;
   margin-top: 1rem;
   padding-bottom: 6rem;
-`
+`;
 
 const TextArea = styled.textarea`
   flex-grow: 1;
@@ -127,7 +145,7 @@ const TextArea = styled.textarea`
   ::placeholder {
     color: #aaa;
   }
-`
+`;
 
 const Footer = styled.div`
   position: fixed;
@@ -144,7 +162,7 @@ const Footer = styled.div`
   align-items: center;
   z-index: 100;
   box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
-`
+`;
 
 const FooterButton = styled.button`
   background: none;
@@ -155,4 +173,4 @@ const FooterButton = styled.button`
   align-items: center;
   gap: 0.25rem;
   cursor: pointer;
-`
+`;
