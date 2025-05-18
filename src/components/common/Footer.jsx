@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import "../../styles/color.css";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { ReactComponent as penIcon } from "../../assets/icons/penIcon.svg";
 import { ReactComponent as homeIcon } from "../../assets/icons/homeIcon.svg";
@@ -10,11 +10,16 @@ import { ReactComponent as userIcon } from "../../assets/icons/userIcon.svg";
 export default function Footer() {
   const [active, setActive] = useState("home");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleClick = (key) => {
     setActive(key);
     if (key === "home") navigate("/");
-    if (key === "write") navigate("/write");
+    if (key === "write") {
+      navigate("/write", {
+        state: { from: location.pathname }
+      });
+    }
     if (key === "mypage") navigate("/mypage");
   };
 
