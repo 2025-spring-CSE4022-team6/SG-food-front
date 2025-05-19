@@ -5,7 +5,7 @@ import "../../styles/color.css";
 
 /**
  * 단일 리뷰 카드
- * @param {string} id - 음식점 ID
+ * @param {string} id - 리뷰 ID
  * @param {string} name - 음식점 이름
  * @param {number} rating - 별점
  * @param {string[]} tags - 태그 배열
