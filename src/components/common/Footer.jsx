@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import "../../styles/color.css";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { useLoginRequired } from "../../hooks/useLoginRequired"; // ✅ 추가
 import LoginRequiredModal from "../common/LoginRequiredModal"; // ✅ 추가
@@ -13,6 +13,7 @@ import { ReactComponent as userIcon } from "../../assets/icons/userIcon.svg";
 export default function Footer() {
   const [active, setActive] = useState("home");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { showModal, setShowModal, checkLogin } = useLoginRequired(); // ✅ 추가
 
@@ -24,7 +25,11 @@ export default function Footer() {
     }
 
     if (key === "home") navigate("/");
-    if (key === "write") navigate("/write");
+    if (key === "write") {
+      navigate("/write", {
+        state: { from: location.pathname }
+      });
+    }
     if (key === "mypage") navigate("/mypage");
   };
 

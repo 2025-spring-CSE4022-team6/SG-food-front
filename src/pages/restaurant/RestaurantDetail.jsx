@@ -45,6 +45,7 @@ const RestaurantDetail = () => {
 
   return (
     <Wrapper>
+      <BackButton to="/">← 메인으로</BackButton> 
       <Content>
         <Image src={restaurant.image} alt="음식 이미지" />
         <TitleRow>
@@ -74,9 +75,7 @@ const RestaurantDetail = () => {
             </StyledLink>
           ))}
         </ReviewList>
-      </Content>
-
-      <Pagination>
+        <Pagination>
         <PageButton onClick={handlePrev} disabled={page === 1}>
           이전
         </PageButton>
@@ -84,6 +83,7 @@ const RestaurantDetail = () => {
           다음
         </PageButton>
       </Pagination>
+      </Content>
     </Wrapper>
   );
 };
@@ -93,6 +93,7 @@ export default RestaurantDetail;
 // ---------- styled-components ----------
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -100,9 +101,11 @@ const Wrapper = styled.div`
   min-height: 100vh;
   padding: 1.25rem;
   text-align: center;
+  background-color: #f6f6f6;
 `;
 
 const Content = styled.div`
+  margin-top: 3rem;
   width: 100%;
   max-width: 24rem;
 `;
@@ -171,6 +174,7 @@ const ReviewList = styled.ul`
   padding: 0;
   list-style: none;
   width: 100%;
+  min-height: 12rem; 
 `;
 
 const StyledLink = styled(Link)`
@@ -206,10 +210,9 @@ const ReviewCard = styled.div`
 
 const Pagination = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 300px;
-  padding-top: 1rem;
+  justify-content: center;
+  gap: 6rem;
+  margin-top: 1.5rem;
 `;
 
 const PageButton = styled.button`
@@ -225,5 +228,23 @@ const PageButton = styled.button`
 
   &:hover {
     background-color: ${({ disabled }) => (disabled ? "#ddd" : "#ff3b2f")};
+  }
+`;
+
+const BackButton = styled(Link)`
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  background-color: #ff6f61;
+  color: #fff;
+  border-radius: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: #ff3b2f;
   }
 `;
