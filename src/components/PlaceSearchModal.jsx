@@ -53,8 +53,8 @@ const Overlay = styled.div`
 const Modal = styled.div`
   background: white;
   padding: 1rem;
-  width: 90%;
-  max-width: 500px;
+  width: 70%;
+  max-width: 300px;
   border-radius: 1rem;
 `;
 
