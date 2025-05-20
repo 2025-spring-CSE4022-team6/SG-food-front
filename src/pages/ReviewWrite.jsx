@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { FaCamera, FaMapMarkerAlt } from 'react-icons/fa';
 import { picData } from '../components/mainpage/picData';
 import { useLocation } from "react-router-dom";
+import PlaceSearchModal from "../components/PlaceSearchModal";
 
 const ReviewWrite = () => {
   const navigate = useNavigate();
@@ -15,6 +16,13 @@ const ReviewWrite = () => {
       const url = URL.createObjectURL(file);
       setImage(url);
     }
+  };
+  const [showModal, setShowModal] = useState(false); // 🔥 추가
+  const [selectedPlace, setSelectedPlace] = useState(null); // 선택한 장소
+
+  const handleSelectPlace = (place) => {
+    setSelectedPlace(place);
+    setShowModal(false);
   };
   
 
@@ -52,6 +60,7 @@ const ReviewWrite = () => {
   };
 
   const tagOptions = ["친절함", "혼밥가능", "가성비", "매움", "인테리어", "화장실있음", "맛있음"];
+
 
   return (
     <Container>
@@ -280,6 +289,7 @@ const TitleInput = styled.input`
   }
 `;
 
+
 const TextArea = styled.textarea`
   flex-grow: 1;
   width: 100%;
@@ -309,6 +319,7 @@ const ImageUploadArea = styled.div`
   cursor: pointer;
 `;
 
+
 const UploadPlaceholder = styled.div`
   width: 100%;
   height: 100%;
@@ -318,6 +329,8 @@ const UploadPlaceholder = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 100;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
 `;
 
 const UploadedImage = styled.img`

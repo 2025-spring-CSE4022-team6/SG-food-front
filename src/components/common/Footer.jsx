@@ -3,6 +3,9 @@ import "../../styles/color.css";
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
+import { useLoginRequired } from "../../hooks/useLoginRequired"; // ✅ 추가
+import LoginRequiredModal from "../common/LoginRequiredModal"; // ✅ 추가
+
 import { ReactComponent as penIcon } from "../../assets/icons/penIcon.svg";
 import { ReactComponent as homeIcon } from "../../assets/icons/homeIcon.svg";
 import { ReactComponent as userIcon } from "../../assets/icons/userIcon.svg";
@@ -12,8 +15,15 @@ export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const { showModal, setShowModal, checkLogin } = useLoginRequired(); // ✅ 추가
+
   const handleClick = (key) => {
     setActive(key);
+
+    if (key === "write" || key === "mypage") {
+      if (!checkLogin()) return;
+    }
+
     if (key === "home") navigate("/");
     if (key === "write") {
       navigate("/write", {
@@ -30,14 +40,18 @@ export default function Footer() {
   ];
 
   return (
-    <FooterBar>
-      {menuItems.map(({ key, icon, label }) => (
-        <IconButton key={key} onClick={() => handleClick(key)}>
-          <StyledIcon as={icon} selected={active === key} />
-          <Label selected={active === key}>{label}</Label>
-        </IconButton>
-      ))}
-    </FooterBar>
+    <>
+      <FooterBar>
+        {menuItems.map(({ key, icon, label }) => (
+          <IconButton key={key} onClick={() => handleClick(key)}>
+            <StyledIcon as={icon} selected={active === key} />
+            <Label selected={active === key}>{label}</Label>
+          </IconButton>
+        ))}
+      </FooterBar>
+      {showModal && <LoginRequiredModal onClose={() => setShowModal(false)} />}{" "}
+      {/* ✅ 모달 렌더링 */}
+    </>
   );
 }
 
