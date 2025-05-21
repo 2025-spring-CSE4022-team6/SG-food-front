@@ -18,7 +18,6 @@ const ReviewWrite = () => {
     }
   };
   const [showModal, setShowModal] = useState(false); // 🔥 추가
-  const [selectedPlace, setSelectedPlace] = useState(null); // 선택한 장소
 
   const handleSelectPlace = (place) => {
     setSelectedPlace(place);
