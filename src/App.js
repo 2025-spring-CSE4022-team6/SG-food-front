@@ -13,8 +13,8 @@ import RestaurantDetail from "./pages/restaurant/RestaurantDetail";
 import MyPage from "./components/mypage/MyPage";
 import ReviewWrite from "./pages/ReviewWrite";
 
-localStorage.setItem("accessToken", "test-token"); // 강제로 로그인된 상태 만들기
-//localStorage.removeItem("accessToken"); // 로그아웃 상태로 만들기
+//localStorage.setItem("accessToken", "test-token"); // 강제로 로그인된 상태 만들기
+localStorage.removeItem("accessToken"); // 로그아웃 상태로 만들기
 
 function App() {
   return (
