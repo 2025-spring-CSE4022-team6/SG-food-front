@@ -37,7 +37,7 @@ const KakaoMap = ({ keyword }) => {
   }
 
 
-  const filteredData = picData.filter((item) =>
+  const filteredData = data.filter((item) =>
     item.name.toLowerCase().includes(keyword.toLowerCase())
   );
 
