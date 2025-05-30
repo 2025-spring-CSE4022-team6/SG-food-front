@@ -28,6 +28,7 @@ const SignupPage = () => {
     alert(`환영합니다, ${nickname}님!`);
     localStorage.setItem("accessToken", "fake-token");
     localStorage.setItem("nickname", nickname); // 닉네임 저장 예시
+    localStorage.setItem("email", email);
     navigate("/");
   };
 

@@ -6,9 +6,13 @@ import ReviewCard from "./ReviewCard";
 const MyPage = () => {
   const navigate = useNavigate();
 
+  const nickname = localStorage.getItem("nickname") || "닉네임 없음";
+  const email = localStorage.getItem("email") || "이메일 없음";
+
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("nickname");
+    localStorage.removeItem("email");
     alert("로그아웃되었습니다");
     navigate("/");
   };
@@ -38,8 +42,8 @@ const MyPage = () => {
       <ProfileContainer>
         <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
         <ProfileImage> </ProfileImage>
-        <InfoBox>PubPick</InfoBox>
-        <InfoBox> pubpick@naver.com </InfoBox>
+        <InfoBox>{nickname}</InfoBox>
+        <InfoBox> {email} </InfoBox>
       </ProfileContainer>
       <ReviewContainer>
         <h3>작성한 리뷰 목록</h3>
