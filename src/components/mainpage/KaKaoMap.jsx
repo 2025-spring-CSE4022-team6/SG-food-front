@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import Map from "./mapcomp/Map.jsx";
 import Pics from "./Pics.jsx";
 import MapBox from "./mapcomp/MapBox.jsx";
-//import { picData } from "./picData.js";
-//import {instance} from "../../api/instance.js";
-import axios from "axios";
+import {instance} from "../../api/instance.js";
 
 const KakaoMap = ({ keyword }) => {
   // Fetch data from the API
@@ -18,13 +16,9 @@ const KakaoMap = ({ keyword }) => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/place`,
-          {
-          timeout: 10000, // 10 seconds timeout
-          withCredentials: true ,// Include credentials in the request
-          }
-        );
-        setData(response.data);
+        const response = await instance.get("/place");
+        //console.log("Fetched data:", response.data.data);
+        setData(response.data.data);
       } catch (err) {
         console.error("Failed to fetch data:", err);
         setError("Failed to fetch data");

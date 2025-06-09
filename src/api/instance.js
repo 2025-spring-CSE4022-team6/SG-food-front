@@ -6,4 +6,4 @@ export const instance = axios.create({
   withCredentials: true,
 });
 
-console.log("API URL:", process.env.REACT_APP_API_URL);
+//console.log("API URL:", process.env.REACT_APP_API_URL);
