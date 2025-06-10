@@ -16,9 +16,6 @@ import ReviewWrite from "./pages/ReviewWrite";
 import LoginPage from "./pages/login/LoginPage";
 import SignupPage from "./pages/signup/SignupPage";
 
-//localStorage.setItem("accessToken", "test-token"); // 강제로 로그인된 상태 만들기
-localStorage.removeItem("accessToken"); // 로그아웃 상태로 만들기
-
 function App() {
   return (
     <AppContainer>
