@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
+import { instance } from "../../api/instance";
 
 const MyPage = () => {
   const navigate = useNavigate();
-
-  const nickname = localStorage.getItem("nickname") || "닉네임 없음";
-  const email = localStorage.getItem("email") || "이메일 없음";
+  const [user, setUser] = useState(null);
+  const [reviews, setReviews] = useState([]);
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
@@ -18,49 +18,79 @@ const MyPage = () => {
   };
 
   // 샘플 데이터
-  const reviews = [
-    {
-      id: 1,
-      name: "고주파",
-      rating: 4.8,
-      reviewCount: 500,
-      tags: ["맛", "분위기", "가성비"],
-      imageSrc: "/img/store-default.jpg",
-    },
-    {
-      id: 2,
-      name: "홍등롱",
-      rating: 4.8,
-      reviewCount: 500,
-      tags: ["맛", "분위기", "가성비"],
-      imageSrc: "/img/store-default.jpg",
-    },
-  ];
+  // const reviews = [
+  //   {
+  //     id: 1,
+  //     name: "고주파",
+  //     rating: 4.8,
+  //     reviewCount: 500,
+  //     tags: ["맛", "분위기", "가성비"],
+  //     imageSrc: "/img/store-default.jpg",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "홍등롱",
+  //     rating: 4.8,
+  //     reviewCount: 500,
+  //     tags: ["맛", "분위기", "가성비"],
+  //     imageSrc: "/img/store-default.jpg",
+  //   },
+  // ];
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = localStorage.getItem("accessToken");
+        console.log("현재 저장된 토큰:", token);
+        const res = await instance.get("/user/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const { data } = res.data;
+        setUser(data);
+        setReviews(data.reviews || []);
+      } catch (err) {
+        alert("마이페이지 정보를 불러오지 못했습니다.");
+        console.error(err);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  if (!user) return <div>로딩 중...</div>;
 
   return (
     <div>
       <ProfileContainer>
         <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
         <ProfileImage> </ProfileImage>
-        <InfoBox>{nickname}</InfoBox>
-        <InfoBox> {email} </InfoBox>
+        <InfoBox>{user.nickname}</InfoBox>
+        <InfoBox>{user.email}</InfoBox>
       </ProfileContainer>
+
       <ReviewContainer>
         <h3>작성한 리뷰 목록</h3>
-        {reviews.map((review, index) => (
-          <ReviewCard
-            key={review.id}
-            id={review.id}
-            name={review.name}
-            rating={review.rating}
-            reviewCount={review.reviewCount}
-            tags={review.tags}
-            imageSrc={review.imageSrc}
-            isSelected={false}
-            onSelect={() => {}}
-            index={index}
-          />
-        ))}
+        {reviews.length === 0 ? (
+          <p>작성한 리뷰가 없습니다.</p>
+        ) : (
+          reviews.map((review, index) => (
+            <ReviewCard
+              key={review.id || index}
+              id={review.id}
+              name={review.name}
+              rating={review.rating}
+              reviewCount={review.reviewCount}
+              tags={review.tags}
+              imageSrc={review.imageSrc}
+              isSelected={false}
+              onSelect={() => {}}
+              index={index}
+            />
+          ))
+        )}
       </ReviewContainer>
     </div>
   );

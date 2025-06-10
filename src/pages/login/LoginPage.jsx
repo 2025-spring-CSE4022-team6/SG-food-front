@@ -2,22 +2,47 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import HeaderWithoutSearch from "../../components/common/HeaderWithoutSearch";
+import { instance } from "../../api/instance";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // 간단한 로그인 시뮬레이션
-    if (email && password) {
-      localStorage.setItem("accessToken", "fake-token");
-      alert("로그인되었습니다.");
-      navigate("/"); // 로그인 성공 시 메인페이지로 이동
-    } else {
+    const res = await instance.post("/auth/login", {
+      email,
+      password,
+    });
+    console.log("로그인 응답:", res.data);
+
+    if (!email || !password) {
       alert("이메일과 비밀번호를 입력하세요.");
+      return;
+    }
+
+    try {
+      const res = await instance.post("/auth/login", {
+        email,
+        password,
+      });
+
+      const { accessToken, nickname } = res.data.data;
+
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("nickname", nickname || "");
+      localStorage.setItem("email", email);
+
+      alert("로그인되었습니다.");
+      navigate("/");
+    } catch (error) {
+      if (error.response?.data?.message) {
+        alert(`로그인 실패: ${error.response.data.message}`);
+      } else {
+        alert("로그인 실패: 네트워크 오류 또는 서버 오류");
+      }
     }
   };
 
