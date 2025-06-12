@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 import { instance } from "../../api/instance";
+import LogRocket from "logrocket";
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -13,6 +14,9 @@ const MyPage = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("nickname");
     localStorage.removeItem("email");
+
+    LogRocket.logout(); // ✅ 로그아웃 시 세션 정리
+
     alert("로그아웃되었습니다");
     navigate("/");
   };
@@ -38,16 +42,18 @@ const MyPage = () => {
   // ];
 
   useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    console.log("현재 저장된 토큰:", token);
+
+    if (!token) {
+      alert("로그인이 필요합니다.");
+      navigate("/login");
+      return; // ✅ 토큰 없으면 API 호출하지 않음
+    }
+
     const fetchProfile = async () => {
       try {
-        const token = localStorage.getItem("accessToken");
-        console.log("현재 저장된 토큰:", token);
-        const res = await instance.get("/user/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
+        const res = await instance.get("/user/profile"); // headers 생략해도 됨 (interceptor로 처리)
         const { data } = res.data;
         setUser(data);
         setReviews(data.reviews || []);
@@ -58,7 +64,7 @@ const MyPage = () => {
     };
 
     fetchProfile();
-  }, []);
+  }, [navigate]);
 
   if (!user) return <div>로딩 중...</div>;
 

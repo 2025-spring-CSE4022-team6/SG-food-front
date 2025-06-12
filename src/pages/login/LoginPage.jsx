@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import HeaderWithoutSearch from "../../components/common/HeaderWithoutSearch";
 import { instance } from "../../api/instance";
+import LogRocket from "logrocket";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -11,12 +12,6 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    const res = await instance.post("/auth/login", {
-      email,
-      password,
-    });
-    console.log("로그인 응답:", res.data);
 
     if (!email || !password) {
       alert("이메일과 비밀번호를 입력하세요.");
@@ -31,13 +26,28 @@ const LoginPage = () => {
 
       const { accessToken, nickname } = res.data.data;
 
+      if (!accessToken) {
+        throw new Error("accessToken이 존재하지 않습니다.");
+      }
+
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("nickname", nickname || "");
       localStorage.setItem("email", email);
 
+      // ✅ 로그인 성공 시 identify 실행
+      LogRocket.identify(email, {
+        name: nickname || "사용자",
+        email: email,
+        role: "user", // 커스텀 정보도 추가 가능
+      });
+
       alert("로그인되었습니다.");
       navigate("/");
     } catch (error) {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("nickname");
+      localStorage.removeItem("email");
+
       if (error.response?.data?.message) {
         alert(`로그인 실패: ${error.response.data.message}`);
       } else {

@@ -16,6 +16,9 @@ import ReviewWrite from "./pages/ReviewWrite";
 import LoginPage from "./pages/login/LoginPage";
 import SignupPage from "./pages/signup/SignupPage";
 
+import LogRocket from "logrocket";
+LogRocket.init("2do4ui/pubpick");
+
 function App() {
   return (
     <AppContainer>
