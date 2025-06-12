@@ -15,8 +15,6 @@ const MyPage = () => {
     localStorage.removeItem("nickname");
     localStorage.removeItem("email");
 
-    LogRocket.logout(); // ✅ 로그아웃 시 세션 정리
-
     alert("로그아웃되었습니다");
     navigate("/");
   };
