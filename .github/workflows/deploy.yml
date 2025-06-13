@@ -1,0 +1,30 @@
+name: Build and Upload Sentry Release
+
+on:
+  push:
+    branches:
+      - develop # 또는 배포 브랜치
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Upload sourcemaps to Sentry
+        uses: getsentry/action-release@v1
+        with:
+          environment: production
+          version: ${{ github.sha }}
+          sourcemaps: ./build/static/js
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: davin-sj
+          SENTRY_PROJECT: pubpick

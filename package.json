@@ -62,6 +62,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "babel-jest": "^29.7.0",
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "wait-on": "^8.0.3"
   }
 }
