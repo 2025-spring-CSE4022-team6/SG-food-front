@@ -36,7 +36,8 @@ export default function Footer() {
         state: { from: location.pathname },
       });
     }
-    if (key === "mypage") navigate("/mypage");
+    // 의도된 에러
+    if (key === "mypage") navigate("/mypageee");
   };
 
   const menuItems = [
