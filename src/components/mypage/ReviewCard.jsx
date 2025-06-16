@@ -2,27 +2,13 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const ReviewCard = React.forwardRef(
-  (
-    {
-      id,
-      name,
-      rating,
-      reviewCount,
-      tags,
-      imageSrc,
-      isSelected,
-      onSelect,
-      index,
-    },
-    ref
-  ) => {
+  ({ id, name, rating, reviewCount, tags, imageSrc }, ref) => {
     const handleClick = () => {
-      onSelect(index);
       window.location.href = `/myreview/${id}`;
     };
 
     return (
-      <CardContainer ref={ref} onClick={handleClick} isSelected={isSelected}>
+      <CardContainer ref={ref} onClick={handleClick}>
         <ImageWrapper>
           <Image src={imageSrc} alt={name} />
         </ImageWrapper>
