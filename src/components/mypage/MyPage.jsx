@@ -61,8 +61,22 @@ const MyPage = () => {
       try {
         const res = await instance.get("/user/profile"); // headers 생략해도 됨 (interceptor로 처리)
         const { data } = res.data;
+
+        console.log("리뷰 원본 구조:", data.reviews);
+
+        localStorage.setItem("nickname", data.nickname);
+        localStorage.setItem("email", data.email);
+
         setUser(data);
-        setReviews(data.reviews || []);
+        setReviews(
+          (data.reviews || []).map((r) => ({
+            ...r,
+            rating: r.rating ?? r.score ?? 0,
+            reviewCount: r.reviewCount ?? r.totalReviews ?? 0,
+            tags: Array.isArray(r.tags) ? r.tags : [],
+            imageSrc: r.imageSrc ?? r.imagePath ?? "/img/store-default.jpg",
+          }))
+        );
       } catch (err) {
         alert("마이페이지 정보를 불러오지 못했습니다.");
         console.error(err);
@@ -88,18 +102,15 @@ const MyPage = () => {
         {reviews.length === 0 ? (
           <p>작성한 리뷰가 없습니다.</p>
         ) : (
-          reviews.map((review, index) => (
+          reviews.map((review) => (
             <ReviewCard
-              key={review.id || index}
+              key={review.id}
               id={review.id}
               name={review.name}
               rating={review.rating}
               reviewCount={review.reviewCount}
               tags={review.tags}
               imageSrc={review.imageSrc}
-              isSelected={false}
-              onSelect={() => {}}
-              index={index}
             />
           ))
         )}
