@@ -123,13 +123,16 @@ const ReviewWrite = () => {
   };
 
   const tagOptions = [
-    "친절함",
-    "혼밥가능",
+    "단체회식",
+    "분위기 좋음",
     "가성비",
-    "매움",
-    "인테리어",
-    "화장실있음",
+    "화장실 깨끗",
     "맛있음",
+    "친절함",
+    "2차로 좋음",
+    "대화하기 좋음",
+    "그냥 그래요",
+    "비추천",
   ];
 
   return (
@@ -184,8 +187,8 @@ const ReviewWrite = () => {
         </ImageUploadArea>
         <TagColumn>
           <AddTagButton
-            onClick={() => setTagListVisible(true)}
-            disabled={selectedTags.length >= maxTags}
+            onClick={() => setTagListVisible((prev) => !prev)}
+            disabled={selectedTags.length >= maxTags && !tagListVisible}
           >
             + 태그추가
           </AddTagButton>
@@ -196,7 +199,9 @@ const ReviewWrite = () => {
                   key={tag}
                   onClick={() => {
                     handleAddTag(tag);
-                    setTagListVisible(false);
+                    if (selectedTags.length + 1 >= maxTags) {
+                      setTagListVisible(false);
+                    }
                   }}
                   disabled={selectedTags.includes(tag)}
                 >
