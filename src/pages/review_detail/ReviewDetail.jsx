@@ -61,7 +61,7 @@ function ReviewDetail() {
     <div>
       <ReviewHeader title={review.title} />
       <ReviewProfile
-        profileImage={profileData.profileImage}
+        // profileImage={profileData.profileImage}
         name={profileData.name}
         rating={profileData.rating}
         date={profileData.date}
