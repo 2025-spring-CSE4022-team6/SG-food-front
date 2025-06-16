@@ -74,7 +74,7 @@ const MyPage = () => {
             rating: r.rating ?? r.score ?? 0,
             reviewCount: r.reviewCount ?? r.totalReviews ?? 0,
             tags: Array.isArray(r.tags) ? r.tags : [],
-            imageSrc: r.imageSrc ?? r.imagePath ?? "/img/profile-default.svg",
+            imageSrc: r.imageSrc ?? r.imagePath ?? "/img/store-default.jpg",
           }))
         );
       } catch (err) {
