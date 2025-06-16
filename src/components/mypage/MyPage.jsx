@@ -10,10 +10,18 @@ const MyPage = () => {
   const [user, setUser] = useState(null);
   const [reviews, setReviews] = useState([]);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("nickname");
     localStorage.removeItem("email");
+
+    // 기존 유저 로그 종료 + 새로운 빈 세션 시작
+    try {
+      await LogRocket.startNewSessionSameConfig();
+      console.log("LogRocket 새 세션 시작됨");
+    } catch (err) {
+      console.error("LogRocket 세션 초기화 실패:", err);
+    }
 
     alert("로그아웃되었습니다");
     navigate("/");
