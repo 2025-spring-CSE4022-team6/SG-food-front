@@ -43,7 +43,6 @@ function App() {
       <Router>
         <Routes>
           {/* Footer 없는 풀스크린 페이지 */}
-          <Route path="/write" element={<ReviewWrite />} />
 
           {/* Footer 포함되는 페이지들 */}
           <Route element={<Layout />}>
@@ -57,6 +56,7 @@ function App() {
             <Route path="/myreview/:id" element={<ReviewDetail />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
+            <Route path="/write" element={<ReviewWrite />} />
           </Route>
         </Routes>
       </Router>

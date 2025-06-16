@@ -64,6 +64,9 @@ const MyPage = () => {
 
         console.log("리뷰 원본 구조:", data.reviews);
 
+        localStorage.setItem("nickname", data.nickname);
+        localStorage.setItem("email", data.email);
+
         setUser(data);
         setReviews(
           (data.reviews || []).map((r) => ({
@@ -71,7 +74,7 @@ const MyPage = () => {
             rating: r.rating ?? r.score ?? 0,
             reviewCount: r.reviewCount ?? r.totalReviews ?? 0,
             tags: Array.isArray(r.tags) ? r.tags : [],
-            imageSrc: r.imageSrc ?? r.imagePath ?? "/img/store-default.jpg",
+            imageSrc: r.imageSrc ?? r.imagePath ?? "/img/profile-default.svg",
           }))
         );
       } catch (err) {
