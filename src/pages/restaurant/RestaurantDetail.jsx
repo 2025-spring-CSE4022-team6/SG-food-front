@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { instance } from "../../api/instance";
-import { getRestaurantImage } from "../../components/common/restaurantImages";
 
 const RestaurantDetail = () => {
   const { id } = useParams();
@@ -45,15 +44,18 @@ const RestaurantDetail = () => {
     <Wrapper>
       {/* <BackButton to="/">← 메인으로</BackButton>  */}
       <Content>
-        <Image src={getRestaurantImage(restaurant.id)} alt="음식 이미지" />
+        <Image
+          src={restaurant.imagePath || "/img/store-default.jpg"}
+          alt="음식 이미지"
+        />
         <TitleRow>
           <Title>{restaurant.name}</Title>
           <Rating>★{restaurant.score}</Rating>
         </TitleRow>
         <TagList>
-          {(restaurant.tags || restaurant.tagList || []).map((tag, i) => (
-            <Tag key={i}>#{tag}</Tag>
-          ))}
+        {(restaurant.tags || restaurant.tagList || []).map((tag, i) => (
+          <Tag key={i}>#{tag}</Tag>
+        ))}
         </TagList>
         <Time>{restaurant.cuisine || "정보 없음"}</Time>
         <Time>{restaurant.location || "정보 없음"}</Time>
@@ -151,13 +153,13 @@ const TagList = styled.div`
 
 const Tag = styled.div`
   display: inline-block;
-  padding: 0.375rem 0.75rem;
-  border: 0.125rem solid #ff6f61;
-  border-radius: 1.875rem;
-  font-size: 0.8125rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #ff6f61;
+  border-radius: 1rem;
+  font-size: 0.6875rem;
   color: #ff6f61;
   font-weight: 500;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.25rem;
 `;
 
 const Time = styled.p`
