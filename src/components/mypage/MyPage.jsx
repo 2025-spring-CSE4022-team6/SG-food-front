@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 import { instance } from "../../api/instance";
 import LogRocket from "logrocket";
+import { getRestaurantImage } from "../common/restaurantImages";
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -71,15 +72,24 @@ const MyPage = () => {
         console.log("리뷰 구조 확인:", data.reviews[0]);
 
         setReviews(
-          (data.reviews || []).map((r) => ({
-            ...r,
-            name: r.title ?? "(제목 없음)",
-            storeName: r.placeName ?? "(가게 없음)",
-            rating: r.score ?? 0,
-            reviewCount: r.reviewCount ?? r.totalReviews ?? 0,
-            tags: Array.isArray(r.tagList) ? r.tagList : [],
-            imageSrc: r.imageSrc ?? r.imagePath ?? "/img/store-default.jpg",
-          }))
+          (data.reviews || []).map((r) => {
+            const image = getRestaurantImage(r.placeId ?? r.placeName); // ✅ 경로 받아오고
+            console.log(
+              "리뷰 이미지 경로 확인:",
+              r.placeId ?? r.placeName,
+              image
+            ); // ✅ 콘솔 출력
+
+            return {
+              ...r,
+              name: r.title ?? "(제목 없음)",
+              storeName: r.placeName ?? "(가게 없음)",
+              rating: r.score ?? 0,
+              reviewCount: r.reviewCount ?? r.totalReviews ?? 0,
+              tags: Array.isArray(r.tagList) ? r.tagList : [],
+              imageSrc: image, // ✅ 실제 적용
+            };
+          })
         );
       } catch (err) {
         alert("마이페이지 정보를 불러오지 못했습니다.");
