@@ -68,12 +68,16 @@ const MyPage = () => {
         localStorage.setItem("email", data.email);
 
         setUser(data);
+        console.log("리뷰 구조 확인:", data.reviews[0]);
+
         setReviews(
           (data.reviews || []).map((r) => ({
             ...r,
-            rating: r.rating ?? r.score ?? 0,
+            name: r.title ?? "(제목 없음)",
+            storeName: r.placeName ?? "(가게 없음)",
+            rating: r.score ?? 0,
             reviewCount: r.reviewCount ?? r.totalReviews ?? 0,
-            tags: Array.isArray(r.tags) ? r.tags : [],
+            tags: Array.isArray(r.tagList) ? r.tagList : [],
             imageSrc: r.imageSrc ?? r.imagePath ?? "/img/store-default.jpg",
           }))
         );
@@ -107,6 +111,7 @@ const MyPage = () => {
               key={review.id}
               id={review.id}
               name={review.name}
+              storeName={review.storeName}
               rating={review.rating}
               reviewCount={review.reviewCount}
               tags={review.tags}
