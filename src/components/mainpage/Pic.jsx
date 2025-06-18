@@ -52,9 +52,7 @@ const Pic = forwardRef(
           <div className="pic-box-header">
             <span className="pic-box-title">{name}</span>
             <span className="pic-box-rating">
-              <span className="pic-box-star">★</span>
-              <span className="pic-box-score">{rating}</span>
-              <span className="pic-box-score">({reviewCount} reviews)</span>
+              {`★ ${rating} (${reviewCount} reviews)`}
             </span>
           </div>
 
