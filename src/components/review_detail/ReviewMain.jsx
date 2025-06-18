@@ -20,7 +20,7 @@ const TitleContainer = styled.div`
 `;
 
 const StoreName = styled.h1`
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
 `;
@@ -40,7 +40,7 @@ const StoreImage = styled.img`
 `;
 
 const ReviewContent = styled.p`
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
   color: #333;
