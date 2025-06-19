@@ -103,7 +103,7 @@ const MyPage = () => {
   if (!user) return <div>로딩 중...</div>;
 
   return (
-    <div>
+    <PageWrapper>
       <ProfileContainer>
         <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
         <ProfileImage> </ProfileImage>
@@ -130,11 +130,16 @@ const MyPage = () => {
           ))
         )}
       </ReviewContainer>
-    </div>
+    </PageWrapper>
   );
 };
 
 export default MyPage;
+
+const PageWrapper = styled.div`
+  min-height: 100vh;
+  background-color: #f4f4f4;
+`;
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -150,11 +155,12 @@ const ProfileContainer = styled.div`
 const LogoutButton = styled.button`
   align-self: flex-end;
   margin-bottom: 0.5rem;
-  background-color: #ccc;
-  padding: 0.5rem 1rem;
+  background-color: var(--gray-200);
+  padding: 0.4rem 0.8rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 0.7rem;
 `;
 
 const ProfileImage = styled.div`
@@ -172,7 +178,7 @@ const ProfileImage = styled.div`
 const InfoBox = styled.div`
   width: 60%;
   padding: 0.05rem;
-  background-color: #e0e0e0;
+  // background-color: #e0e0e0;
   border-radius: 4px;
   text-align: center;
 `;
