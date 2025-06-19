@@ -42,6 +42,7 @@ const CardContainer = styled.div`
   border-radius: 0.5rem;
   padding: 0.6rem;
   margin-bottom: 0.75rem;
+  cursor: pointer;
   background-color: ${({ isSelected }) =>
     isSelected ? "var(--coral-main)" : "#ffffff"};
 `;

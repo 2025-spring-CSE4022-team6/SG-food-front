@@ -29,7 +29,7 @@ const ImageScrollContainer = styled.div`
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
-  margin: 1rem 0;
+  margin: 0rem 0;
 `;
 
 const StoreImage = styled.img`
