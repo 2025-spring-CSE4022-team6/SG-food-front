@@ -178,7 +178,7 @@ const ProfileImage = styled.div`
 const InfoBox = styled.div`
   width: 60%;
   padding: 0.05rem;
-  // background-color: #e0e0e0;
+  background-color: white;
   border-radius: 4px;
   text-align: center;
 `;
